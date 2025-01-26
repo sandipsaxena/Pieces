@@ -3,108 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="expires" content="0">
-    <title>Happy Marriage Anniversary</title>
-    <!-- Import Aptos font from Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Aptos:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Anniversary Wishes</title>
     <style>
         body {
-            font-family: 'Aptos', sans-serif; /* Use Aptos font */
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_India.svg'); /* Indian flag as background */
-            background-size: cover; /* Make the background cover the entire screen */
-            background-position: center center; /* Center the background */
-            background-attachment: fixed; /* Make the background fixed while scrolling */
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            flex-direction: column;
-            color: white; /* Text color to contrast with the flag background */
+            background-color: #f0f0f0;
         }
 
-        .container {
+        #app {
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white for readability */
+            background-color: #fff;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Shadow around the container */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* Style for the "Happy Marriage Anniversary" text with tri-color */
-        h1 {
-            background: linear-gradient(90deg, #FF9933, #ffffff 33%, #138808 66%); /* Gradient from Indian flag's colors */
-            -webkit-background-clip: text;
-            color: transparent;
-            font-size: 3rem;
-            font-weight: bold;
-        }
-
-        #image-container img {
-            width: 100%; /* Adjust width to fit the container */
-            max-width: 500px; /* Limit the maximum size */
-            height: auto; /* Maintain aspect ratio */
-            margin: 10px;
-        }
-
-        .fact-button {
-            padding: 12px 30px;
-            font-size: 18px;
-            color: #fff;
-            background: linear-gradient(45deg, #ff7e5f, #feb47b); /* Gradient from pink to orange */
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Shadow effect for button */
+            background-color: #007BFF;
+            color: white;
+            transition: background-color 0.3s;
+            background-image: url('flower-pattern.png'); /* Add a floral pattern image */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
-        .fact-button:hover {
-            background: linear-gradient(45deg, #fe4b6d, #fd9f43); /* Slightly darker gradient on hover */
-            transform: scale(1.05); /* Slight zoom effect */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Increase shadow on hover */
+        button:hover {
+            background-color: #0056b3;
+            background-image: url('flower-pattern-hover.png'); /* Optional: Different pattern on hover */
         }
 
-        .fact-button:active {
-            transform: scale(0.98); /* Button shrink effect on click */
+        #imagesContainer {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .anniversary-image {
+            width: 150px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Happy Marriage Anniversary</h1>
-        <button id="fact-button" class="fact-button">Show Wishes</button>
-        <div id="image-container"></div>
+    <div id="app">
+        <button id="showWishesButton">Happy Marriage Anniversary</button>
+        <div id="imagesContainer" class="hidden">
+            <img src="di.webp" alt="Didi and Jijaji" class="anniversary-image">
+            <img src="bro.webp" alt="Brother" class="anniversary-image">
+        </div>
     </div>
-
     <script>
-        document.getElementById('fact-button').addEventListener('click', () => {
-            // Create image elements
-            const imageContainer = document.getElementById('image-container');
-            imageContainer.innerHTML = ""; // Clear previous images
-
-            // Create and display 'bro.jpeg'
-            const broImage = document.createElement('img');
-            broImage.src = 'bro.jpeg'; // Ensure the path is correct
-            broImage.alt = 'Bro Image';
-
-            // Create and display 'di.jpeg'
-            const diImage = document.createElement('img');
-            diImage.src = 'di.jpeg'; // Ensure the path is correct
-            diImage.alt = 'Di Image';
-
-            // Append images to the container
-            imageContainer.appendChild(broImage);
-            imageContainer.appendChild(diImage);
-
-            // Add random query parameter to force fresh loading
-            broImage.src = "bro.jpeg?random=" + new Date().getTime();
-            diImage.src = "di.jpeg?random=" + new Date().getTime();
-
-            // Hide the "Show Wishes" button
-            document.getElementById('fact-button').style.display = 'none';
+        document.getElementById('showWishesButton').addEventListener('click', function() {
+            const imagesContainer = document.getElementById('imagesContainer');
+            imagesContainer.classList.toggle('hidden');
         });
     </script>
 </body>
